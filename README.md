@@ -24,18 +24,61 @@ It might be helpful to think of closures in the same way: just like the sandwich
 
 ## A closure *closes over* its environment
 
+- Feel free to reuse the sandwich metaphor as much as you'd like
+
 When we say, "A closure closes over its environment," we mean that it keeps track of the variables it had access to when it was created.
 
-- Walk through simple example, perhaps based on the first one at MDN
+- Walk through simple example, perhaps based on the first one at MDN:
+
+``` javascript
+function init() {
+  var name = "Chuck"
+  function logName() {
+    console.log(name)
+  }
+  logName()
+}
+
+init()
+```
 
 ## How does a closure work?
 
 - Explain relationship between closures and function-level scope in JavaScript.
+  - JavaScript's function-level scoping means that closures are pretty easy to reason about: variables are hoisted to the top of their current context (function), and any functions declared in that context have access to those variables
+
 - Explain pitfalls of using closures as a result
+  - Updating a shared variable in one closure affects the variable in other closures:
+
+  ```javascript
+  function close() {
+    var x = 5
+
+    function add() {
+      return ++x
+    }
+
+    function subtract() {
+      return --x
+    }
+
+    return { add, subtract }
+  }
+
+  var { add, subtract } = close()
+
+  add() // 6
+  subtract() // 5
+  subtract() // 4
+  add () // 5
+  // etc.
+  ```
+  - Allocating functions has a performance penalty
+  - Closures can be a source of memory leaks (e.g., closed over variables might not get GC-ed because can't determine whether they're still in use -- see https://github.com/facebook/react/issues/2988)
 
 ## How/why use closures?
 
-- Demonstrate the usefulness of closures of modularizing functions or abstracting away implementation details
+- Demonstrate the usefulness of closures in modularizing functions or abstracting away implementation details
 - Mention emulating private methods
 - Mention partial function application and currying
 
