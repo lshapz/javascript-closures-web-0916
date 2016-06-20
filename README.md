@@ -12,7 +12,7 @@ JavaScript Closures
 
 Imagine you're making a sandwich.
 
-![sandwich](http://i.giphy.com/J25GqHE9tPrwY.gif)
+![sandwich](https://curriculum-content.s3.amazonaws.com/skills-based-js/bread-food-plate-rucola.jpg)
 
 Because you're a sandwich expert, you've buttered both sides of the bread before lightly toasting it.
 
