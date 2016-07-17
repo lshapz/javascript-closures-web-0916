@@ -29,7 +29,7 @@ function fatBastard(meal) {
 ```
 
 Next, we'll add a way for Fat Bastard to tell us what he's having for dinner, by returning a function. We can then assign
-this function to a variable, and call it when we want to know what type of food we gave to Fat Bastard.
+the returned function to a variable, and call it when we want to know what type of food we gave Fat Bastard for dinner.
 
 ```js
 function fatBastard(meal) {
@@ -66,8 +66,8 @@ const whatsForDinner = fatBastard('Kobe beef');
 whatsForDinner(); // prints 'I'm eatin' a bit of Kobe beef! Burp.'
 ```
 
-Keep in mind that since we're returning a function, there's no need to use the same name for our variable as the function
-being returned. This would work too:
+Keep in mind that since we're returning a function as a value, there's no need to use the returned function's name as
+the same name for our variable. Meaning, this would work too:
 
 ```js
 const whatsInHisTummy = fatBastard('Mini-Me');
@@ -132,12 +132,12 @@ executed a lot (e.g. the people working on Angular, React, ... do keep an eye on
 
 Modularization and abstracting away implementation details is key to writing good, clean code. For example, imagine
 you're in a back alley. There's a door on the left, with a shady looking character looking out the peephole. As you look
-at him, he yells out in a raspy voice. "Wot's the password?". He knows the password, but there's no way for us to obtain
+at him, he yells out in a raspy voice. "Wot's the password?". _He_ knows the password, but there's no way for us to obtain
 that information from him. He's certainly not going to tell us. Let's represent our new friend in code:
 
 ```js
 function raspyDoorGuy() {
-  const password = 'sher';
+  const password = 'yarr';
 
   function givePassword(givenPassword) {
     if (givenPassword === password) {
@@ -176,7 +176,7 @@ is enough.
 
 ```js
 function raspyDoorGuy() {
-  const password = 'sher';
+  const password = 'yarr';
 
   function givePassword(givenPassword) {
     if (givenPassword === password) {
@@ -212,7 +212,7 @@ but if we give him enough money, we'll get the password:
 
 ```
 const { bribe } = raspyDoorGuy();
-bribe(80); // returns 'cher'
+bribe(80); // returns 'yarr'
 ```
 
 And now we're in! That's about it for closures. It's important to know how they work and why they're useful, as well as
