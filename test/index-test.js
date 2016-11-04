@@ -4,7 +4,7 @@ const fs = require('fs')
 const jsdom = require('mocha-jsdom')
 const path = require('path')
 
-
+debugger
 describe('index', () => {
   
   jsdom({
@@ -13,6 +13,7 @@ describe('index', () => {
   
 
   it('runs', () => {
-    expect(true).to.be.true
+    expect(true)
   })
+
 })
